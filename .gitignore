@@ -5,5 +5,5 @@
 webDriver
 tests/__pycache__/
 tests/main_page/__pycache__/
-
 tests/testing_AB/__pycache__/
+tests/testing_elements_add_remove/__pycache__/
