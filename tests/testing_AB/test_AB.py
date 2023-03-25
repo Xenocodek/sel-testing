@@ -16,3 +16,15 @@ def test_open_AB(chrome_driver: webdriver):
     link.click()
 
     assert link_AB in chrome_driver.current_url
+
+#Тест A/B вариаций
+def test_correct_title(chrome_driver: webdriver):
+
+    version_A = "A/B Test Variation 1"
+    version_B = "A/B Test Control"
+
+    title = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/h3'))
+    )
+
+    assert title.text == version_A or title.text == version_B
