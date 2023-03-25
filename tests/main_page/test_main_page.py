@@ -12,7 +12,6 @@ def test_open_main_page(chrome_driver: webdriver):
 
 #Тест на присутствия приветствия на странице
 def test_on_welcome(chrome_driver: webdriver):
-    chrome_driver.get('http://the-internet.herokuapp.com/')
 
     welcome_text = WebDriverWait(chrome_driver, 10).until(
         EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/h1'))
@@ -22,7 +21,6 @@ def test_on_welcome(chrome_driver: webdriver):
 
 #Тест на отображение ссылок
 def test_display_links(chrome_driver: webdriver):
-    chrome_driver.get('http://the-internet.herokuapp.com/')
 
     links = chrome_driver.find_elements(By.TAG_NAME, "a")
     for link in links:
@@ -30,7 +28,6 @@ def test_display_links(chrome_driver: webdriver):
 
 #Тест на наличие футера
 def test_display_footer(chrome_driver: webdriver):
-    chrome_driver.get('http://the-internet.herokuapp.com/')
 
     footer_text_1 = WebDriverWait(chrome_driver, 10).until(
         EC.visibility_of_element_located((By.XPATH, '//*[@id="page-footer"]/div/div[text()="Powered by "]'))
@@ -44,7 +41,6 @@ def test_display_footer(chrome_driver: webdriver):
 
 #Тест на наличие картинки
 def test_display_img(chrome_driver: webdriver):
-    chrome_driver.get('http://the-internet.herokuapp.com/')
 
     img_element = WebDriverWait(chrome_driver, 10).until(
         EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/a/img[@src="/img/forkme_right_green_007200.png"]'))
