@@ -17,7 +17,7 @@ def test_open_AB(chrome_driver: webdriver):
 
     assert link_AB in chrome_driver.current_url
 
-#Тест A/B вариаций
+#Тест вариаций A/B заголовка
 def test_correct_title(chrome_driver: webdriver):
 
     version_A = "A/B Test Variation 1"
@@ -28,3 +28,22 @@ def test_correct_title(chrome_driver: webdriver):
     )
 
     assert title.text == version_A or title.text == version_B
+
+#Тест описания вариации A/B
+def test_ab_description(chrome_driver: webdriver):
+    
+    description_A = "Also known as split testing. This is a way in which businesses are able " \
+    "to simultaneously test and learn different versions of a page to " \
+    "see which text and/or functionality works best towards a desired outcome " \
+    "(e.g. a user action such as a click-through)."
+
+    description_B = "Also known as split testing. This is a way in which businesses are able " \
+    "to simultaneously test and learn different versions of a page to " \
+    "see which text and/or functionality works best towards a desired outcome " \
+    "(e.g. a user action such as a click-through)."
+
+    description = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/p'))
+    )
+
+    assert description.text == description_A or description.text == description_B
