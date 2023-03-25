@@ -73,3 +73,15 @@ def test_incorrect_password(chrome_driver: webdriver):
     chrome_driver.get(url)
 
     assert url in chrome_driver.current_url
+
+#Тест авторизации с пустым логином и паролем
+def test_empty_login_password(chrome_driver: webdriver):
+    username = ''
+    password = ''
+    link = "http://the-internet.herokuapp.com/basic_auth"
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/basic_auth'
+
+    chrome_driver.get(url)
+
+    assert link in chrome_driver.current_url
