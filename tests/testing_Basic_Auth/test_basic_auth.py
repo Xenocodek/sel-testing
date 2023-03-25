@@ -18,6 +18,7 @@ def test_open_basic_auth(chrome_driver: webdriver):
 
     assert link_elements in chrome_driver.current_url
 
+#Тест успешной авторизации
 def test_successfull_auth(chrome_driver: webdriver):
     username = 'admin'
     password = 'admin'
@@ -39,3 +40,14 @@ def test_successfull_auth(chrome_driver: webdriver):
     )
 
     assert description.text == correct_description
+
+#Тест авторизации с неправильным логином и паролем
+def test_incorrect_login_password(chrome_driver: webdriver):
+    username = 'user'
+    password = 'user'
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/basic_auth'
+
+    chrome_driver.get(url)
+
+    assert url in chrome_driver.current_url
