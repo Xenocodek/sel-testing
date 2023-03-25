@@ -19,3 +19,11 @@ def test_on_welcome(chrome_driver: webdriver):
     )
 
     assert welcome_text.text == "Welcome to the-internet"
+
+#Тест на отображение ссылок
+def test_display_links(chrome_driver: webdriver):
+    chrome_driver.get('http://the-internet.herokuapp.com/')
+
+    links = chrome_driver.find_elements(By.TAG_NAME, "a")
+    for link in links:
+        assert link.is_displayed()
