@@ -27,3 +27,18 @@ def test_correct_title(chrome_driver: webdriver):
     )
 
     assert title.text == correct_title
+
+#Тест кнопки добавления элемента
+def test_add_elements(chrome_driver: webdriver):
+
+    button_add = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/button[text()="Add Element"]'))
+    )
+
+    button_add.click()
+
+    button_delete = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="elements"]/button[text()="Delete"]'))
+    )
+
+    assert button_delete is not None
