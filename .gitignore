@@ -1,0 +1,7 @@
+.venv
+.env
+.pytest_cache
+.vscode
+webDriver
+tests/__pycache__/
+tests/main_page/__pycache__/
