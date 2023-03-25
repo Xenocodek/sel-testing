@@ -43,6 +43,7 @@ def test_add_element(chrome_driver: webdriver):
 
     assert button_delete is not None
 
+#Тест кнопки удаления элемента
 def test_remove_element(chrome_driver: webdriver):
 
     button_delete = WebDriverWait(chrome_driver, 10).until(
@@ -54,5 +55,30 @@ def test_remove_element(chrome_driver: webdriver):
     button_remove = WebDriverWait(chrome_driver, 10).until(
         EC.staleness_of(button_delete)
     )
+
+    assert button_remove
+
+#Тест добавления и удаления кнопок
+def test_add_remove_elements(chrome_driver: webdriver):
+
+    button_add = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/button[text()="Add Element"]'))
+    )
+
+    for i in range(9):
+        button_add.click()
+
+    while True:
+        button_delete = WebDriverWait(chrome_driver, 10).until(
+            EC.visibility_of_element_located((By.CLASS_NAME, 'added-manually'))
+        )
+        button_delete.click()
+
+        button_remove = WebDriverWait(chrome_driver, 10).until(
+        EC.staleness_of(button_delete)
+        )
+
+        if button_remove:
+            break
 
     assert button_remove
