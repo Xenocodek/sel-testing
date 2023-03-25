@@ -21,7 +21,7 @@ def chrome_driver():
     options.add_argument('--user-agent={}'.format(user_agent))
     options.add_argument('--disable-infobars')
     options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("--headless")
+    #options.add_argument("--headless")
 
     driver = webdriver.Chrome(service=service, options=options)
     driver.maximize_window()
