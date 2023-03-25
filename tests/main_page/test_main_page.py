@@ -41,3 +41,13 @@ def test_display_footer(chrome_driver: webdriver):
         EC.visibility_of_element_located((By.XPATH, '//*[@id="page-footer"]/div/div/a[text()="Elemental Selenium"]'))
     )
     assert footer_text_2 is not None
+
+#Тест на наличие картинки
+def test_display_img(chrome_driver: webdriver):
+    chrome_driver.get('http://the-internet.herokuapp.com/')
+
+    img_element = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/a/img[@src="/img/forkme_right_green_007200.png"]'))
+    )
+
+    assert img_element.get_attribute("src") == 'http://the-internet.herokuapp.com/img/forkme_right_green_007200.png'
