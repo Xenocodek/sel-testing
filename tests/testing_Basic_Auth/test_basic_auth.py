@@ -51,3 +51,14 @@ def test_incorrect_login_password(chrome_driver: webdriver):
     chrome_driver.get(url)
 
     assert url in chrome_driver.current_url
+
+#Тест авторизации с неправильным логином
+def test_incorrect_login(chrome_driver: webdriver):
+    username = 'user'
+    password = 'admin'
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/basic_auth'
+
+    chrome_driver.get(url)
+
+    assert url in chrome_driver.current_url
