@@ -16,3 +16,14 @@ def test_open_elements_add_remove(chrome_driver: webdriver):
     link.click()
 
     assert link_elements in chrome_driver.current_url
+
+#Тест корректности заголовка
+def test_correct_title(chrome_driver: webdriver):
+
+    correct_title = "Add/Remove Elements"
+
+    title = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/h3')) 
+    )
+
+    assert title.text == correct_title
