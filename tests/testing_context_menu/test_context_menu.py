@@ -8,7 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.alert import Alert
 
 #Тест на открытие "Context Menu"
-def test_open_basic_auth(chrome_driver: webdriver):
+def test_open_context_menu(chrome_driver: webdriver):
     chrome_driver.get('http://the-internet.herokuapp.com/')
     link_elements = "http://the-internet.herokuapp.com/context_menu"
     
