@@ -16,3 +16,16 @@ def test_open_checkboxes(chrome_driver: webdriver):
     link.click()
 
     assert link_elements in chrome_driver.current_url
+
+#Тест корректности заголовка
+def test_correct_title(chrome_driver: webdriver):
+
+    chrome_driver.get('http://the-internet.herokuapp.com/checkboxes')
+
+    correct_title = "Checkboxes"
+
+    title = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/h3')) 
+    )
+
+    assert title.text == correct_title
