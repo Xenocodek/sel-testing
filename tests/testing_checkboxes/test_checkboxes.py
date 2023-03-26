@@ -42,3 +42,20 @@ def test_default_checkboxes(chrome_driver: webdriver):
     )
 
     assert checkbox_2.is_selected()
+
+#Тест на пустые чекбоксы
+def test_empty_checkboxes(chrome_driver: webdriver):
+
+    checkbox_1 = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="checkboxes"]/input[1]'))
+    )
+
+    assert not checkbox_1.is_selected()
+
+    checkbox_2 = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="checkboxes"]/input[2]'))
+    )
+
+    checkbox_2.click()
+
+    assert not checkbox_2.is_selected()
