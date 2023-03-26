@@ -75,4 +75,6 @@ def test_selected_checkboxes(chrome_driver: webdriver):
         EC.visibility_of_element_located((By.XPATH, '//*[@id="checkboxes"]/input[2]'))
     )
 
+    checkbox_2.click()
+
     assert checkbox_2.is_selected()
