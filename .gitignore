@@ -10,3 +10,4 @@ tests/testing_elements_add_remove/__pycache__/
 tests/testing_Basic_Auth/__pycache__/
 tests/testing_checkboxes/__pycache__/
 tests/testing_context_menu/__pycache__/
+tests/testing_Digest_Auth/__pycache__/
