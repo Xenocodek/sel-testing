@@ -16,3 +16,71 @@ def test_open_digest_auth(chrome_driver: webdriver):
     link.click()
 
     assert link_elements in chrome_driver.current_url
+
+#Тест успешной авторизации
+def test_successfull_auth(chrome_driver: webdriver):
+    username = 'admin'
+    password = 'admin'
+    correct_title = "Digest Auth"
+    correct_description = "Congratulations! You must have the proper credentials."
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/digest_auth'
+
+    chrome_driver.get(url)
+
+    title = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/h3')) 
+    )
+
+    assert title.text == correct_title
+
+    description = WebDriverWait(chrome_driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, '//*[@id="content"]/div/p'))
+    )
+
+    assert description.text == correct_description
+
+#Тест авторизации с неправильным логином и паролем
+def test_incorrect_login_password(chrome_driver: webdriver):
+    username = 'user'
+    password = 'user'
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/digest_auth'
+
+    chrome_driver.get(url)
+
+    assert url in chrome_driver.current_url
+
+#Тест авторизации с неправильным логином
+def test_incorrect_login(chrome_driver: webdriver):
+    username = 'user'
+    password = 'admin'
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/digest_auth'
+
+    chrome_driver.get(url)
+
+    assert url in chrome_driver.current_url
+
+#Тест авторизации с неправильным паролем
+def test_incorrect_password(chrome_driver: webdriver):
+    username = 'admin'
+    password = 'user'
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/digest_auth'
+
+    chrome_driver.get(url)
+
+    assert url in chrome_driver.current_url
+
+#Тест авторизации с пустым логином и паролем
+def test_empty_login_password(chrome_driver: webdriver):
+    username = ''
+    password = ''
+    link = "http://the-internet.herokuapp.com/digest_auth"
+
+    url = f'http://{username}:{password}@the-internet.herokuapp.com/digest_auth'
+
+    chrome_driver.get(url)
+
+    assert link in chrome_driver.current_url
